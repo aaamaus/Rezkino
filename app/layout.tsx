@@ -1,5 +1,8 @@
-import './globals.css'
+import '@/app/src/globalStyles/globals.css'
 import { Inter } from 'next/font/google'
+import SideBar from "@/app/src/components/sideBar/SideBar";
+import Header from "@/app/src/components/header/Header";
+import styles from '@/app/src/globalStyles/layout.module.css';
 
 export const metadata = {
   title: 'Create Next App',
@@ -13,17 +16,17 @@ const inter = Inter({
   subsets: ['latin'],
 })
 
-export default function RootLayout({
-  children,
-}: {
+interface IProps {
   children: React.ReactNode
-}) {
+}
+
+export default function RootLayout({ children }: IProps) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-      <div>header</div>
-        <div>
-          <div>sideBar</div>
+      <body className={`${inter.className}`}>
+        <Header />
+        <div className={styles.contentWrapper}>
+          <SideBar />
           {children}
         </div>
       </body>

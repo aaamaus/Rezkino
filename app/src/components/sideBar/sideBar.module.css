@@ -1,0 +1,38 @@
+.wrapper {
+    margin-right: 230px;
+}
+
+.itemWrapper {
+    padding: 5px 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+}
+
+.itemWrapper:hover {
+    cursor: pointer;
+    color: var(--main-purple);
+    transition: all 0.2s linear;
+}
+
+.itemTitle {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+}
+
+.itemTitleActive {
+    color: var(--main-purple);
+}
+
+.icon {
+    margin-bottom: 6px;
+}
+
+.topSidebarWrapper {
+    margin-bottom: 70px;
+}
