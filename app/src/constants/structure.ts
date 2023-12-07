@@ -27,3 +27,5 @@ export const userMenuItems = [
     path: 'invite'
   }
 ]
+
+export const ROUTES_WITHOUT_SIDEBAR = ['/filters'];
