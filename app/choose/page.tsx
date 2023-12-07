@@ -2,12 +2,11 @@
 
 import styles from "./Choose.module.css";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Mousewheel, Pagination, EffectCreative } from 'swiper/modules';
+import { Mousewheel, Pagination } from 'swiper/modules';
 import mockPreview from './../../public/images/mockPreview.png';
 import Image from 'next/image'
 
 import 'swiper/css';
-import 'swiper/css/effect-creative';
 
 const Choose = () => {
   return (
@@ -15,11 +14,10 @@ const Choose = () => {
       <Swiper
         direction={'vertical'}
         slidesPerView={1}
-        spaceBetween={300}
+        spaceBetween={30}
         mousewheel={true}
-        modules={[Mousewheel, Pagination, EffectCreative]}
+        modules={[Mousewheel, Pagination]}
         className={styles.mySwiper}
-        speed={1300}
       >
         <SwiperSlide>
           <div className={styles.item}>
@@ -29,7 +27,7 @@ const Choose = () => {
               </div>
               <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.footerContent}></div>
+            <div className={styles.footerContent}>1</div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -40,7 +38,7 @@ const Choose = () => {
               </div>
               <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.footerContent}></div>
+            <div className={styles.footerContent}>2</div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -51,7 +49,7 @@ const Choose = () => {
               </div>
               <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.footerContent}></div>
+            <div className={styles.footerContent}>3</div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -62,7 +60,7 @@ const Choose = () => {
               </div>
               <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.footerContent}></div>
+            <div className={styles.footerContent}>4</div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
@@ -73,7 +71,7 @@ const Choose = () => {
               </div>
               <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.footerContent}></div>
+            <div className={styles.footerContent}>5</div>
           </div>
         </SwiperSlide>
       </Swiper>
