@@ -19,6 +19,6 @@
 and (min-width: 951px)
 and (max-width: 1440px){
     .wrapper {
-        padding: 1.8rem 3.8rem;
+        padding: 1.4rem 3.8rem;
     }
 }

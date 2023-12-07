@@ -1,48 +1,82 @@
+"use client"
+
 import styles from "./Choose.module.css";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Mousewheel, Pagination, EffectCreative } from 'swiper/modules';
 import mockPreview from './../../public/images/mockPreview.png';
 import Image from 'next/image'
 
+import 'swiper/css';
+import 'swiper/css/effect-creative';
+
 const Choose = () => {
   return (
-    <main className={styles.page}>
-      <div className={styles.scrollContainer}>
-        <div className={styles.item}>
-          <div className={styles.itemContent}>
-            <div className={styles.imageWrapper}>
-              <Image src={mockPreview} alt={"preview"} />
+    <main>
+      <Swiper
+        direction={'vertical'}
+        slidesPerView={1}
+        spaceBetween={500}
+        mousewheel={true}
+        modules={[Mousewheel, Pagination, EffectCreative]}
+        className={styles.mySwiper}
+        speed={1000}
+      >
+        <SwiperSlide>
+          <div className={styles.item}>
+            <div className={styles.itemContent}>
+              <div className={styles.imageWrapper}>
+                <Image className={styles.img} src={mockPreview} alt={"preview"} />
+              </div>
+              <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.itemInfoBar}></div>
+            <div className={styles.footerContent}></div>
           </div>
-          <div className={styles.footerContent}></div>
-        </div>
-        <div className={styles.item}>
-          <div className={styles.itemContent}>
-            <div className={styles.imageWrapper}>
-              <Image src={mockPreview} alt={"preview"} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <div className={styles.itemContent}>
+              <div className={styles.imageWrapper}>
+                <Image className={styles.img} src={mockPreview} alt={"preview"} />
+              </div>
+              <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.itemInfoBar}></div>
+            <div className={styles.footerContent}></div>
           </div>
-          <div className={styles.footerContent}></div>
-        </div>
-        <div className={styles.item}>
-          <div className={styles.itemContent}>
-            <div className={styles.imageWrapper}>
-              <Image src={mockPreview} alt={"preview"} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <div className={styles.itemContent}>
+              <div className={styles.imageWrapper}>
+                <Image className={styles.img} src={mockPreview} alt={"preview"} />
+              </div>
+              <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.itemInfoBar}></div>
+            <div className={styles.footerContent}></div>
           </div>
-          <div className={styles.footerContent}></div>
-        </div>
-        <div className={styles.item}>
-          <div className={styles.itemContent}>
-            <div className={styles.imageWrapper}>
-              <Image src={mockPreview} alt={"preview"} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <div className={styles.itemContent}>
+              <div className={styles.imageWrapper}>
+                <Image className={styles.img} src={mockPreview} alt={"preview"} />
+              </div>
+              <div className={styles.itemInfoBar}></div>
             </div>
-            <div className={styles.itemInfoBar}></div>
+            <div className={styles.footerContent}></div>
           </div>
-          <div className={styles.footerContent}></div>
-        </div>
-      </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className={styles.item}>
+            <div className={styles.itemContent}>
+              <div className={styles.imageWrapper}>
+                <Image className={styles.img} src={mockPreview} alt={"preview"} />
+              </div>
+              <div className={styles.itemInfoBar}></div>
+            </div>
+            <div className={styles.footerContent}></div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
     </main>
   )
 };

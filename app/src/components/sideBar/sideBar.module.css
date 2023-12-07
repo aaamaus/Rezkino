@@ -28,7 +28,7 @@ ul li.itemSemanticWrapper:last-child {
 
 .itemWrapper:hover {
     cursor: pointer;
-    color: var(--white);
+    color: var(--hover-gray);
 }
 
 .itemTitle {
