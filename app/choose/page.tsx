@@ -15,11 +15,11 @@ const Choose = () => {
       <Swiper
         direction={'vertical'}
         slidesPerView={1}
-        spaceBetween={500}
+        spaceBetween={300}
         mousewheel={true}
         modules={[Mousewheel, Pagination, EffectCreative]}
         className={styles.mySwiper}
-        speed={1000}
+        speed={1300}
       >
         <SwiperSlide>
           <div className={styles.item}>
