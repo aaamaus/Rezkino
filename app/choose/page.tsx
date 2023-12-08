@@ -20,6 +20,7 @@ const Choose = () => {
         mousewheel={true}
         modules={[Mousewheel, Pagination]}
         className={styles.mySwiper}
+        speed={500}
       >
         <SwiperSlide>
           <div className={styles.item}>
