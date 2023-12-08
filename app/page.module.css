@@ -1,1 +1,10 @@
 
+.section {
+    background: red;
+    border-bottom: 5px solid black;
+    width: 100vw;
+}
+
+.wrapper {
+    width: 100vw;
+}
