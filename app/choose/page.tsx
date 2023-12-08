@@ -61,6 +61,7 @@ const Choose = () => {
                           {infoBlockItems.map((infoBlockItem) => {
                             return (
                               <div
+                                key={infoBlockItem.path}
                                 className={styles.infoBarItemWrapper}
                                 onMouseEnter={() => setHoveredItem(infoBlockItem.path)}
                                 onMouseLeave={() => setHoveredItem('')}
