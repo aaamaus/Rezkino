@@ -4,14 +4,14 @@ import styles from "./InfoBlock.module.css";
 import Slider from "@mui/material/Slider";
 import Volume from "@/app/src/components/icons/Volume";
 import {useState} from "react";
+import Muted from "@/app/src/components/icons/Muted";
 
 interface IProps {
-  volumeController: boolean;
   volume: number;
   setVolume: (value: number | number[]) => void;
 }
 
-const VolumeController = ({ volumeController, volume, setVolume }: IProps) => {
+const VolumeController = ({ volume, setVolume }: IProps) => {
   const [volumeBar, setVolumeBar] = useState(false);
 
   const volumeIconClickHandler = () => {
@@ -37,14 +37,12 @@ const VolumeController = ({ volumeController, volume, setVolume }: IProps) => {
 					onChange={(_, value) => setVolume(value)}
 				/>
 			</div>}
-      {volumeController && (
-        <div
-          onClick={volumeIconClickHandler}
-          className={styles.volumeIconWrapper}
-        >
-          <Volume/>
-        </div>
-      )}
+      <div
+        onClick={volumeIconClickHandler}
+        className={styles.volumeIconWrapper}
+      >
+        {!volume ? <Muted/> : <Volume/>}
+      </div>
     </div>
   )
 };

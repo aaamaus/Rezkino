@@ -3,6 +3,7 @@ import VolumeController from "@/app/src/components/choose/VolumeController";
 import dynamic from 'next/dynamic'
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 import {useState} from "react";
+import PlayController from "@/app/src/components/choose/PlayController";
 
 interface IProps {
   currentId: number,
@@ -13,6 +14,7 @@ interface IProps {
 }
 
 const SectionItem = ({ currentId, item }: IProps) => {
+  const [pauseController, setPauseController] = useState(true);
   const [volume, setVolume] = useState<number | number[]>(50);
   const [volumeController, setVolumeController] = useState(false);
 
@@ -27,17 +29,23 @@ const SectionItem = ({ currentId, item }: IProps) => {
 				controls={false}
 				width={'100%'}
 				height={'100%'}
-				playing={currentId === item.id}
+        onProgress={(value) => console.log(value)}
+				playing={currentId === item.id && pauseController}
 				loop={true}
 				volume={volume as number / 100}
 				url={item.url}
 			/>}
       <div className={styles.bottomPlaceHolder}/>
-      <VolumeController
-        volume={volume as number}
-        volumeController={volumeController}
-        setVolume={setVolume}
-      />
+      {volumeController && <div className={styles.playerControls}>
+				<PlayController
+					pauseController={pauseController}
+					setPauseController={setPauseController}
+				/>
+				<VolumeController
+					volume={volume as number}
+					setVolume={setVolume}
+				/>
+			</div>}
     </div>
   )
 };

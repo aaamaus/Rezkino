@@ -1,13 +1,26 @@
+"use client"
+
 import styles from "./InfoBlock.module.css";
+import ButtonIcon from "@/app/src/components/icons/ButtonIcon";
+import Saved from "@/app/src/components/icons/Saved";
+import {useState} from "react";
 
 const ChooseFooter = () => {
+  const [hoverButton, setHoverButton] = useState(false);
+
   return (
     <div className={styles.footerContent}>
-      <div className={styles.footerContentButton}>Більше</div>
-      <div className={styles.footerContentData}>
-        <div className={styles.footerContentDataYear}>2020</div>
-        <div className={styles.footerContentDataCtr}>США</div>
-        <div className={styles.footerContentDataNumber}>7/3 <span>IMDb</span></div>
+      <button
+        className={styles.footerContentButton}
+        onMouseLeave={() => setHoverButton(false)}
+        onMouseEnter={() => setHoverButton(true)}
+      >
+        <ButtonIcon stroke={hoverButton} />
+        <span>Більше</span>
+      </button>
+      <div className={styles.footerContentSavedButton}>
+        <Saved />
+        <span>До обраних</span>
       </div>
     </div>
   )

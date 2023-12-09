@@ -48,12 +48,52 @@
     padding: 0.9rem 2.6rem;
     background-color: var(--main-purple);
     border-radius: 8px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerContentButton:hover {
+    cursor: pointer;
+    color: var(--main-dark);
+    background-color: var(--white);
+}
+
+.footerContentButton span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 10px;
+    display: inline-block;
+}
+
+.footerContentSavedButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+}
+
+.footerContentSavedButton:hover {
+    cursor: pointer;
+}
+
+.footerContentSavedButton span {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-left: 15px;
+    display: inline-block;
 }
 
 .footerContentData {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    width: 50.5rem;
 }
 
 .footerContentDataYear {
@@ -129,15 +169,23 @@
     background-color: var(--main-dark);
 }
 
-.sliderWrapper {
+.playerControls {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     position: absolute;
-    right: 40px;
     bottom: 40px;
-    z-index: 9999999;
+    left: 0;
+    right: 0;
+    padding: 0 40px;
+}
+
+.sliderWrapper {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: space-between;
+    width: 40px;
 }
 
 .sliderSlide {
@@ -145,6 +193,18 @@
     margin-bottom: 8px;
 }
 
+.playPauseWrapper {
+    transform: translateY(-5px);
+}
+
+.volumeIconWrapper,
+.playPauseWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playPauseWrapper:hover,
 .volumeIconWrapper:hover {
     cursor: pointer;
 }

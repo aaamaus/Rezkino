@@ -7,6 +7,7 @@ import { data } from "@/app/src/constants/structure";
 import ChooseInfoBlock from "@/app/src/components/choose/ChooseInfoBlock";
 import ChooseFooter from "@/app/src/components/choose/ChooseFooter";
 import SectionItem from "@/app/src/components/choose/SectionItem";
+import AboutBlock from "@/app/src/components/choose/AboutBlock";
 
 const Choose = () => {
   const [currentId, setCurrentId] = useState(0);
@@ -27,6 +28,7 @@ const Choose = () => {
                 return  (
                   <div className={`${styles.section} section`} key={item.id} id={`${item.id}`}>
                     <div className={styles.item}>
+                      <AboutBlock />
                       <div className={styles.itemContent}>
                         <SectionItem item={item} currentId={currentId} />
                         <ChooseInfoBlock />

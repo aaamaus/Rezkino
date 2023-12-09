@@ -43,9 +43,10 @@ a {
 
 .MuiSlider-thumb{
   color: var(--white);
-  width: 12px;
-  height: 12px;
+  width: 15px !important;
+  height: 15px !important;
 }
+
 .MuiSlider-rail{
   color: rgba(255, 255, 255, 0.4);
 }
