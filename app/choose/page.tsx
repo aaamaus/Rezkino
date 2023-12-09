@@ -1,19 +1,15 @@
 "use client"
 
 import styles from "./Choose.module.css";
-import dynamic from 'next/dynamic'
-const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 import ReactFullpage from "@fullpage/react-fullpage";
 import { useState } from "react";
-import Slider from '@mui/material/Slider';
-import {data, infoBlockItems} from "@/app/src/constants/structure";
-import InfoBlockIcons from "../src/components/choose/InfoBlockIcons";
+import { data } from "@/app/src/constants/structure";
+import ChooseInfoBlock from "@/app/src/components/choose/ChooseInfoBlock";
+import ChooseFooter from "@/app/src/components/choose/ChooseFooter";
+import SectionItem from "@/app/src/components/choose/SectionItem";
 
 const Choose = () => {
   const [currentId, setCurrentId] = useState(0);
-  const [volume, setVolume] = useState<number | number[]>(50);
-  const [hoveredItem, setHoveredItem] = useState('');
-  const [volumeController, setVolumeController] = useState(false);
 
   return (
     <main className={styles.mainWrapper}>
@@ -32,58 +28,10 @@ const Choose = () => {
                   <div className={`${styles.section} section`} key={item.id} id={`${item.id}`}>
                     <div className={styles.item}>
                       <div className={styles.itemContent}>
-                        <div
-                          onMouseEnter={() => setVolumeController(true)}
-                          onMouseLeave={() => setVolumeController(false)}
-                          className={styles.imageWrapper}
-                        >
-                          <div className={styles.topPlaceHolder}/>
-                          {currentId === item.id && <ReactPlayer
-														controls={false}
-														width={'100%'}
-														height={'100%'}
-														playing={currentId === item.id}
-														loop={true}
-														volume={volume as number / 100}
-														url={item.url}
-													/>}
-                          <div className={styles.bottomPlaceHolder}/>
-                          {volumeController && <div className={styles.sliderWrapper}>
-														<Slider
-															defaultValue={50}
-															value={volume}
-															orientation="vertical"
-															onChange={(_, value) => setVolume(value)}
-														/>
-													</div>}
-                        </div>
-                        <div className={styles.itemInfoBar}>
-                          {infoBlockItems.map((infoBlockItem) => {
-                            return (
-                              <div
-                                key={infoBlockItem.path}
-                                className={styles.infoBarItemWrapper}
-                                onMouseEnter={() => setHoveredItem(infoBlockItem.path)}
-                                onMouseLeave={() => setHoveredItem('')}
-                              >
-                                <InfoBlockIcons
-                                  iconName={infoBlockItem.path}
-                                  hoveredItem={hoveredItem}
-                                />
-                                <div>{infoBlockItem.number}</div>
-                              </div>
-                            )
-                          })}
-                        </div>
+                        <SectionItem item={item} currentId={currentId} />
+                        <ChooseInfoBlock />
                       </div>
-                      <div className={styles.footerContent}>
-                        <div className={styles.footerContentButton}>Більше</div>
-                        <div className={styles.footerContentData}>
-                          <div className={styles.footerContentDataYear}>2020</div>
-                          <div className={styles.footerContentDataCtr}>США</div>
-                          <div className={styles.footerContentDataNumber}>7/3 <span>IMDb</span></div>
-                        </div>
-                      </div>
+                      <ChooseFooter />
                     </div>
                   </div>
                 )
