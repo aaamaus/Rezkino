@@ -31,6 +31,10 @@
 and (min-width: 951px)
 and (max-width: 1440px){
     .wrapper {
-        padding: 0.4rem 3.8rem;
+        padding: 0 3.8rem;
+    }
+    .filterButton {
+        height: 54px;
     }
 }
+
