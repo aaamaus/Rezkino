@@ -3,16 +3,17 @@
 import styles from "./InfoBlock.module.css";
 import {infoBlockItems} from "@/app/src/constants/structure";
 import InfoBlockIcons from "@/app/src/components/choose/InfoBlockIcons";
-import {useState} from "react";
+import { useState } from "react";
 
 const ChooseInfoBlock = () => {
   const [hoveredItem, setHoveredItem] = useState('');
 
   return (
     <div className={styles.itemInfoBar}>
-      {infoBlockItems.map((infoBlockItem) => {
+      {infoBlockItems.map((infoBlockItem, index) => {
         return (
           <div
+            id={infoBlockItem.path}
             key={infoBlockItem.path}
             className={styles.infoBarItemWrapper}
             onMouseEnter={() => setHoveredItem(infoBlockItem.path)}

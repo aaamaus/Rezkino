@@ -4,9 +4,11 @@ import styles from "./InfoBlock.module.css";
 import ButtonIcon from "@/app/src/components/icons/ButtonIcon";
 import Saved from "@/app/src/components/icons/Saved";
 import {useState} from "react";
+import AboutBlock from "@/app/src/components/choose/AboutBlock";
 
 const ChooseFooter = () => {
   const [hoverButton, setHoverButton] = useState(false);
+  const [hoverSavedButton, setHoverSavedButton] = useState(false);
 
   return (
     <div className={styles.footerContent}>
@@ -18,9 +20,14 @@ const ChooseFooter = () => {
         <ButtonIcon stroke={hoverButton} />
         <span>Більше</span>
       </button>
-      <div className={styles.footerContentSavedButton}>
-        <Saved />
-        <span>До обраних</span>
+      <AboutBlock />
+      <div
+        className={styles.footerContentSavedButton}
+        onMouseLeave={() => setHoverSavedButton(false)}
+        onMouseEnter={() => setHoverSavedButton(true)}
+      >
+        <Saved stroke={hoverSavedButton} />
+        <span>Зберегти</span>
       </div>
     </div>
   )

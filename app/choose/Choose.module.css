@@ -1,5 +1,6 @@
 .mainWrapper {
     width: 100vw;
+    position: relative;
 }
 
 .item {
@@ -11,4 +12,59 @@
 
 .itemContent {
     display: flex;
+}
+
+.tooltip {
+    position: absolute;
+    left: 70px;
+    top: 5px;
+    padding: 30px 20px;
+    border-radius: 10px;
+    border: 1px solid #3E3E44;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    min-width: 180px;
+}
+
+.triangle {
+    position: absolute;
+    border-color: transparent transparent #3E3E44 transparent;
+    border-style: solid;
+    border-width: 1px 30px 30px 30px;
+    height: 0px;
+    width: 0px;
+    top: -1px;
+    left: -30px;
+    transform: rotate(180deg);
+}
+
+.triangleSecond {
+    position: absolute;
+    border-color: transparent transparent black transparent;
+    border-style: solid;
+    border-width: 1px 30px 30px 30px;
+    height: 0px;
+    width: 0px;
+    top: 0;
+    left: -28px;
+    transform: rotate(180deg);
+}
+
+
+.tooltip span {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+.closeWrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }

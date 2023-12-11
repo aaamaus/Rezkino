@@ -18,6 +18,7 @@ const VolumeController = ({ volume, setVolume }: IProps) => {
     if (volume !== 0) {
       setVolume(0)
     }
+
     if (volume === 0) {
       setVolume(50)
     }
@@ -41,7 +42,7 @@ const VolumeController = ({ volume, setVolume }: IProps) => {
         onClick={volumeIconClickHandler}
         className={styles.volumeIconWrapper}
       >
-        {!volume ? <Muted/> : <Volume/>}
+        {!volume ? <Muted /> : <Volume />}
       </div>
     </div>
   )

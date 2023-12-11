@@ -47,6 +47,10 @@ a {
   height: 15px !important;
 }
 
+.progress-controller .MuiSlider-thumb{
+  display: none !important;
+}
+
 .MuiSlider-rail{
   color: rgba(255, 255, 255, 0.4);
 }
