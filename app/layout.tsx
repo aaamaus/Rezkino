@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import SideBar from "@/app/src/components/sideBar/SideBar";
 import Header from "@/app/src/components/header/Header";
 import styles from '@/app/src/globalStyles/layout.module.css';
+import Footer from "@/app/src/components/footer/Footer";
 
 export const metadata = {
   title: 'Create Next App',
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: IProps) {
           <SideBar />
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   )

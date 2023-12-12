@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import MainLogo from "@/app/src/components/icons/MainLogog";
 import { stokeHandler } from "@/app/src/utils/helpers";
 import {MAIN_WHITE} from "@/app/src/constants/colors";
+import HeaderClose from "@/app/src/components/icons/HeaderClose";
 
 const Header = () => {
   const [hoveredItem, setHoveredItem] = useState(false);
@@ -24,14 +25,24 @@ const Header = () => {
       >
         <MainLogo stroke={hoveredLogo ? MAIN_WHITE : ''} />
       </div>
-      <Link
-        href={'/filters'}
-        className={styles.filterButton}
-        onMouseLeave={() => setHoveredItem(false)}
-        onMouseEnter={() => setHoveredItem(true)}
-      >
-        <Filters stroke={stokeHandler(hoveredItem, pathname === '/filters')} />
-      </Link>
+      {pathname === '/filters'
+        ? <Link
+          href={'/choose'}
+          className={styles.filterButton}
+          onMouseLeave={() => setHoveredItem(false)}
+          onMouseEnter={() => setHoveredItem(true)}
+        >
+          <HeaderClose stroke={hoveredItem ? '#fff' : ''} />
+        </Link> :
+        <Link
+          href={'/filters'}
+          className={styles.filterButton}
+          onMouseLeave={() => setHoveredItem(false)}
+          onMouseEnter={() => setHoveredItem(true)}
+        >
+          <Filters stroke={stokeHandler(hoveredItem, pathname === '/filters')}/>
+        </Link>
+      }
     </div>
   )
 };

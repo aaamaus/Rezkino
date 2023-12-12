@@ -1,0 +1,56 @@
+
+.searchWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 73px;
+}
+
+.searchWrapper svg {
+    position: relative;
+    transform: translateY(5px);
+}
+
+.searchInput {
+    background-color: transparent;
+    padding: 12px 0;
+    border: none;
+    border-bottom: 1px solid #2B2B2B;
+    min-width: 490px;
+    margin-left: 35px;
+    outline: none;
+    color: var(--text-gray);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.periodWrapper {
+    max-width: 560px;
+    width: 100%;
+}
+
+.title {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--white);
+    margin-bottom: 30px;
+}
+
+.dateWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+}
+
+.dateItem {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: var(--white);
+}

@@ -2,7 +2,7 @@
 
 import styles from "./InfoBlock.module.css";
 import {infoBlockItems} from "@/app/src/constants/structure";
-import InfoBlockIcons from "@/app/src/components/choose/InfoBlockIcons";
+import InfoBlockIcons from "@/app/src/components/choosePage/InfoBlockIcons";
 import { useState } from "react";
 
 const ChooseInfoBlock = () => {

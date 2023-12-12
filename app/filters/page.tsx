@@ -1,9 +1,14 @@
-import styles from "@/app/page.module.css";
+import styles from './Filters.module.css';
+import { SearchModule } from "@/app/src/components/filtersPage/SearchModule";
+import PeriodModule from "@/app/src/components/filtersPage/PeriodModule";
 
 const Filter = () => {
   return (
-    <main className={styles.main}>
-      Filter Page Coming soon...
+    <main className={styles.pageWrapper}>
+      <div className={styles.contentWrapper}>
+        <SearchModule />
+        <PeriodModule />
+      </div>
     </main>
   )
 };

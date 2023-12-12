@@ -1,10 +1,10 @@
 import styles from "./InfoBlock.module.css";
-import VolumeController from "@/app/src/components/choose/VolumeController";
+import VolumeController from "@/app/src/components/choosePage/VolumeController";
 import dynamic from 'next/dynamic'
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false });
 import {useEffect, useState} from "react";
-import PlayController from "@/app/src/components/choose/PlayController";
-import ProgressController from "@/app/src/components/choose/ProgressController";
+import PlayController from "@/app/src/components/choosePage/PlayController";
+import ProgressController from "@/app/src/components/choosePage/ProgressController";
 
 interface IProps {
   currentId: number,

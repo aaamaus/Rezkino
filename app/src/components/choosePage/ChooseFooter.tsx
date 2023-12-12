@@ -4,7 +4,7 @@ import styles from "./InfoBlock.module.css";
 import ButtonIcon from "@/app/src/components/icons/ButtonIcon";
 import Saved from "@/app/src/components/icons/Saved";
 import {useState} from "react";
-import AboutBlock from "@/app/src/components/choose/AboutBlock";
+import AboutBlock from "@/app/src/components/choosePage/AboutBlock";
 
 const ChooseFooter = () => {
   const [hoverButton, setHoverButton] = useState(false);

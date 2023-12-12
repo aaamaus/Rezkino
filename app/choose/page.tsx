@@ -4,9 +4,9 @@ import styles from "./Choose.module.css";
 import ReactFullpage from "@fullpage/react-fullpage";
 import {useEffect, useState} from "react";
 import { data } from "@/app/src/constants/structure";
-import ChooseInfoBlock from "@/app/src/components/choose/ChooseInfoBlock";
-import ChooseFooter from "@/app/src/components/choose/ChooseFooter";
-import SectionItem from "@/app/src/components/choose/SectionItem";
+import ChooseInfoBlock from "@/app/src/components/choosePage/ChooseInfoBlock";
+import ChooseFooter from "@/app/src/components/choosePage/ChooseFooter";
+import SectionItem from "@/app/src/components/choosePage/SectionItem";
 import Tooltip from "@/app/src/components/shared/Tooltip";
 import {Portal} from "@mui/base/Portal";
 
