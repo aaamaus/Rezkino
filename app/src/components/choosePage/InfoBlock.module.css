@@ -283,7 +283,7 @@ and (max-width: 1440px){
 }
 
 @media screen
-and (min-width: 1600px)
+and (min-width: 1440px)
 and (max-width: 1850px){
     .imageWrapper {
         height: 553px;
@@ -300,11 +300,11 @@ and (min-width: 1850px)
 and (max-width: 2377px){
     .imageWrapper {
         height: 603px;
-        width: 1000px;
+        width: 900px;
     }
     .footerContentData,
     .footerContent {
-        width: 1080px;
+        width: 980px;
     }
 }
 
@@ -312,11 +312,23 @@ and (max-width: 2377px){
 and (min-width: 2377px)
 and (max-width: 2800px){
     .imageWrapper {
-        height: 1053px;
-        width: 1800px;
+        height: 853px;
+        width: 1400px;
     }
     .footerContentData,
     .footerContent {
-        width: 1880px;
+        width: 1480px;
+    }
+}
+
+@media screen
+and (min-width: 2801px){
+    .imageWrapper {
+        height: 853px;
+        width: 1400px;
+    }
+    .footerContentData,
+    .footerContent {
+        width: 1480px;
     }
 }
