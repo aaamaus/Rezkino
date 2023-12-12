@@ -35,8 +35,6 @@ const SectionItem = ({ currentId, item }: IProps) => {
       <div className={styles.topPlaceHolder}/>
       {currentId === item.id && <ReactPlayer
 				controls={false}
-				width={'100%'}
-				height={'100%'}
 				progressInterval={time as number}
         onProgress={(value) => setTime(Math.round(value.playedSeconds))}
         onDuration={(value) => setMaxValue(value)} // @ts-ignore
