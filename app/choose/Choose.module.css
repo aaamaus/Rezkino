@@ -16,7 +16,7 @@
     width: 100vw;
     justify-content: center;
     align-items: center;
-    height: 600px;
+    overflow: hidden;
 }
 
 .tooltip {
@@ -78,7 +78,7 @@
 and (min-width: 600px)
 and (max-width: 1000px){
     .itemContent {
-        height: 400px;
+        height: 450px;
     }
 }
 
@@ -86,7 +86,7 @@ and (max-width: 1000px){
 and (min-width: 1000px)
 and (max-width: 1440px){
     .itemContent {
-        height: 570px;
+        height: 450px;
     }
 }
 
@@ -94,7 +94,7 @@ and (max-width: 1440px){
 and (min-width: 1600px)
 and (max-width: 1850px){
     .itemContent {
-        height: 700px;
+        height: 550px;
     }
 }
 
@@ -102,7 +102,7 @@ and (max-width: 1850px){
 and (min-width: 1850px)
 and (max-width: 2377px){
     .itemContent {
-        height: 780px;
+        height: 630px;
     }
 }
 
@@ -110,6 +110,6 @@ and (max-width: 2377px){
 and (min-width: 2377px)
 and (max-width: 2800px){
     .itemContent {
-        height: 1200px;
+        height: 1050px;
     }
 }

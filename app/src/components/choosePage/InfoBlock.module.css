@@ -271,12 +271,12 @@ and (max-width: 1000px){
 and (min-width: 1000px)
 and (max-width: 1440px){
     .imageWrapper {
-        height: 553px;
-        width: 800px;
+        height: 453px;
+        width: 700px;
     }
     .footerContentData,
     .footerContent {
-        width: 880px;
+        width: 780px;
     }
 }
 
@@ -284,12 +284,12 @@ and (max-width: 1440px){
 and (min-width: 1600px)
 and (max-width: 1850px){
     .imageWrapper {
-        height: 653px;
-        width: 1100px;
+        height: 553px;
+        width: 900px;
     }
     .footerContentData,
     .footerContent {
-        width: 1180px;
+        width: 980px;
     }
 }
 
@@ -297,12 +297,12 @@ and (max-width: 1850px){
 and (min-width: 1850px)
 and (max-width: 2377px){
     .imageWrapper {
-        height: 753px;
-        width: 1200px;
+        height: 603px;
+        width: 1000px;
     }
     .footerContentData,
     .footerContent {
-        width: 1280px;
+        width: 1080px;
     }
 }
 
@@ -310,11 +310,11 @@ and (max-width: 2377px){
 and (min-width: 2377px)
 and (max-width: 2800px){
     .imageWrapper {
-        height: 1153px;
-        width: 2000px;
+        height: 1053px;
+        width: 1800px;
     }
     .footerContentData,
     .footerContent {
-        width: 2080px;
+        width: 1880px;
     }
 }
