@@ -8,6 +8,11 @@
     justify-content: center;
     padding: 1.8rem 4.3rem;
     background-color: var(--main-dark);
-    color: var(--gray);
     z-index: 99;
+    color: var(--secondary-gray);
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    text-transform: uppercase;
 }

@@ -10,7 +10,7 @@ const HeaderClose = ({ stroke }: IProps) => (
     fill="none"
   >
     <path
-      stroke={stroke ? stroke : "#98989E"}
+      stroke={stroke ? stroke : "#888"}
       strokeLinecap="round"
       strokeWidth={2}
       d="M25 25 1 1m24 0L1 25"

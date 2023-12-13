@@ -9,6 +9,7 @@ import ChooseFooter from "@/app/src/components/choosePage/ChooseFooter";
 import SectionItem from "@/app/src/components/choosePage/SectionItem";
 import Tooltip from "@/app/src/components/shared/Tooltip";
 import {Portal} from "@mui/base/Portal";
+import { useAppSelector } from "@/app/store/store";
 
 const Choose = () => {
   const [currentId, setCurrentId] = useState<number>(0);

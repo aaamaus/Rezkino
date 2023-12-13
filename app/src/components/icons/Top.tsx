@@ -10,7 +10,7 @@ const Top = ({ stroke }: IProps) => (
     fill="none"
   >
     <path
-      stroke={stroke ? stroke : "#A2A2A8"}
+      stroke={stroke ? stroke : "#888"}
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}

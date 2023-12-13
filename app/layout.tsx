@@ -4,6 +4,7 @@ import SideBar from "@/app/src/components/sideBar/SideBar";
 import Header from "@/app/src/components/header/Header";
 import styles from '@/app/src/globalStyles/layout.module.css';
 import Footer from "@/app/src/components/footer/Footer";
+import StoreProvider from "@/app/src/components/providers/StoreProvider";
 
 export const metadata = {
   title: 'Create Next App',
@@ -28,7 +29,7 @@ export default function RootLayout({ children }: IProps) {
         <Header />
         <div className={styles.contentWrapper}>
           <SideBar />
-          {children}
+          <StoreProvider>{children}</ StoreProvider>
         </div>
         <Footer />
       </body>

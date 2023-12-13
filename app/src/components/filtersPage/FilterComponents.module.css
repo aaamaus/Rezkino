@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 73px;
+    margin-bottom: 3%;
 }
 
 .searchWrapper svg {
@@ -19,16 +19,30 @@
     min-width: 490px;
     margin-left: 35px;
     outline: none;
-    color: var(--text-gray);
+    color: var(--white);
     font-size: 18px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
 }
 
+.searchInput:focus {
+    border-bottom: 1px solid var(--main-purple);
+}
+
+.searchInput::-webkit-input-placeholder {
+    color: var(--text-gray);
+}
+
+
+.searchInput:focus::-webkit-input-placeholder {
+    color: #444444;
+}
+
 .periodWrapper {
     max-width: 560px;
     width: 100%;
+    margin-bottom: 2%;
 }
 
 .title {
@@ -37,14 +51,14 @@
     font-weight: 400;
     line-height: normal;
     color: var(--white);
-    margin-bottom: 30px;
+    margin-bottom: 4%;
 }
 
 .dateWrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 26px;
+    margin-bottom: 2%;
 }
 
 .dateItem {
@@ -53,4 +67,69 @@
     font-weight: 400;
     line-height: normal;
     color: var(--white);
+}
+
+.genresWrapper {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    max-width: 560px;
+    width: 100%;
+}
+
+.genresListWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.genresItem {
+    padding: 10px 20px;
+    border-radius: 7px;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #D9D9D9;
+    border: 2px solid #D9D9D9;
+    margin: 0 10px 10px 0;
+}
+
+.activeGenre {
+    color: #000;
+    background-color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.genresItem:hover {
+    color: #000;
+    background-color: var(--white);
+    border: 2px solid var(--white);
+    cursor: pointer;
+}
+
+@media screen
+and (min-width: 600px)
+and (max-width: 1000px){
+    .genresItem {
+        padding: 5px 13px;
+        font-size: 13px;
+        margin: 0 6px 6px 0;
+    }
+    .title {
+        font-size: 17px;
+    }
+}
+
+@media screen
+and (min-width: 1000px)
+and (max-width: 1440px){
+    .genresItem {
+        padding: 7px 15px;
+        font-size: 15px;
+        margin: 0 8px 8px 0;
+    }
+    .title {
+        font-size: 20px;
+    }
 }

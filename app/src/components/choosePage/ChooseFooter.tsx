@@ -12,23 +12,23 @@ const ChooseFooter = () => {
 
   return (
     <div className={styles.footerContent}>
-      <button
-        className={styles.footerContentButton}
-        onMouseLeave={() => setHoverButton(false)}
-        onMouseEnter={() => setHoverButton(true)}
-      >
-        <ButtonIcon stroke={hoverButton} />
-        <span>Більше</span>
-      </button>
-      <AboutBlock />
+      <AboutBlock/>
       <div
         className={styles.footerContentSavedButton}
         onMouseLeave={() => setHoverSavedButton(false)}
         onMouseEnter={() => setHoverSavedButton(true)}
       >
-        <Saved stroke={hoverSavedButton} />
+        <Saved stroke={hoverSavedButton}/>
         <span>Зберегти</span>
       </div>
+      <button
+        className={styles.footerContentButton}
+        onMouseLeave={() => setHoverButton(false)}
+        onMouseEnter={() => setHoverButton(true)}
+      >
+        <ButtonIcon stroke={hoverButton}/>
+        <span>Більше</span>
+      </button>
     </div>
   )
 };

@@ -6,7 +6,7 @@ const Info = () => (
     fill="none"
   >
     <path
-      stroke="#fff"
+      stroke="#A2A2A2"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={2}

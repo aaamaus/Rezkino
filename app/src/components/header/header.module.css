@@ -11,6 +11,7 @@
     z-index: 99;
 }
 
+.empty,
 .filterButton {
     width: 86px;
     height: 65px;

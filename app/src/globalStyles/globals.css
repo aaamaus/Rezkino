@@ -5,11 +5,13 @@
   'Roboto Mono', 'Oxygen Mono', 'Ubuntu Monospace', 'Source Code Pro',
   'Fira Mono', 'Droid Sans Mono', 'Courier New', monospace;
 
-  --main-purple: #6E3EFF;
+  --main-purple: #873EFF;
+  --main-button: #6E3EFF;
   --main-dark: #000000;
   --secondary-dark: #1B1B1B;
   --gray: #98989E;
-  --text-gray: #A2A2A8;
+  --secondary-gray: #888;
+  --text-gray: #A2A2A2;
   --white: #ffffff;
   --hover-gray: #CACAD0
 }
@@ -54,6 +56,12 @@ a {
 .MuiSlider-rail{
   color: rgba(255, 255, 255, 0.4);
 }
+
+.period-controller .MuiSlider-rail{
+  color: var(--text-gray) !important;
+  height: 1px !important;
+}
+
 .MuiSlider-track{
   color: var(--main-purple);
 }

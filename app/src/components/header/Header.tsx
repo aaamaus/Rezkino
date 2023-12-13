@@ -7,7 +7,7 @@ import Link from "next/link";
 import { usePathname } from 'next/navigation'
 import MainLogo from "@/app/src/components/icons/MainLogog";
 import { stokeHandler } from "@/app/src/utils/helpers";
-import {MAIN_WHITE} from "@/app/src/constants/colors";
+import {SECONDARY_GRAY} from "@/app/src/constants/colors";
 import HeaderClose from "@/app/src/components/icons/HeaderClose";
 
 const Header = () => {
@@ -17,13 +17,13 @@ const Header = () => {
 
   return (
     <div className={styles.wrapper}>
-      <div/>
+      <div className={styles.empty}/>
       <div
         className={styles.logoWrapper}
         onMouseLeave={() => setHoveredLogo(false)}
         onMouseEnter={() => setHoveredLogo(true)}
       >
-        <MainLogo stroke={hoveredLogo ? MAIN_WHITE : ''} />
+        <MainLogo stroke={hoveredLogo ? SECONDARY_GRAY : ''} />
       </div>
       {pathname === '/filters'
         ? <Link

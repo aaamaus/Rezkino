@@ -3,11 +3,14 @@
 import styles from "./FilterComponents.module.css";
 import Slider from '@mui/material/Slider';
 import { useState } from "react";
+import {useAppDispatch, useAppSelector} from "@/app/store/store";
+import {setPeriod} from "@/app/store/slices/filters.slice";
 
 const minDistance = 1;
 
 const PeriodModule = () => {
-  const [value, setValue] = useState([1700, 2024])
+  const period = useAppSelector((state) => state.filters.period);
+  const dispatch = useAppDispatch();
 
   const handleChange1 = (
     event: Event,
@@ -19,9 +22,11 @@ const PeriodModule = () => {
     }
 
     if (activeThumb === 0) {
-      setValue([Math.min(newValue[0], value[1] - minDistance), value[1]]);
+      const val = [Math.min(newValue[0], period[1] - minDistance), period[1]];
+      dispatch(setPeriod(val));
     } else {
-      setValue([value[0], Math.max(newValue[1], value[0] + minDistance)]);
+      const val = [period[0], Math.max(newValue[1], period[0] + minDistance)];
+      dispatch(setPeriod(val));
     }
   };
 
@@ -29,14 +34,15 @@ const PeriodModule = () => {
     <div className={styles.periodWrapper}>
       <div className={styles.title}>Період</div>
       <div className={styles.dateWrapper}>
-        <div className={styles.dateItem}>{value[0]}</div>
-        <div className={styles.dateItem}>{value[1]}</div>
+        <div className={styles.dateItem}>{period[0]}</div>
+        <div className={styles.dateItem}>{period[1]}</div>
       </div>
       <Slider
-        min={1700}
+        min={1980}
         max={2024}
+        className="period-controller"
         getAriaLabel={() => 'Minimum distance'}
-        value={value}
+        value={period}
         onChange={handleChange1}
         disableSwap
       />
