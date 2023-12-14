@@ -1,15 +1,12 @@
 "use client"
 
-import styles from "./Choose.module.css";
+import styles from "./_styles/Choose.module.css";
 import ReactFullpage from "@fullpage/react-fullpage";
 import {useEffect, useState} from "react";
 import { data } from "@/app/src/constants/structure";
-import ChooseInfoBlock from "@/app/src/components/choosePage/ChooseInfoBlock";
-import ChooseFooter from "@/app/src/components/choosePage/ChooseFooter";
-import SectionItem from "@/app/src/components/choosePage/SectionItem";
+import SectionItem from "@/app/choose/_components/section/SectionItem";
 import Tooltip from "@/app/src/components/shared/Tooltip";
 import {Portal} from "@mui/base/Portal";
-import { useAppSelector } from "@/app/store/store";
 
 const Choose = () => {
   const [currentId, setCurrentId] = useState<number>(0);
@@ -35,13 +32,7 @@ const Choose = () => {
               {data.map((item) => {
                 return  (
                   <div className={`${styles.section} section`} key={item.id} id={`${item.id}`}>
-                    <div className={styles.item}>
-                      <div className={styles.itemContent}>
-                        <SectionItem item={item} currentId={currentId} />
-                        <ChooseInfoBlock />
-                      </div>
-                      <ChooseFooter />
-                    </div>
+                    <div className={styles.item}><SectionItem item={item} currentId={currentId} /></div>
                   </div>
                 )
               })}

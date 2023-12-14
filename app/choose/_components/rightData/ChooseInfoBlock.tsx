@@ -1,8 +1,8 @@
 "use client"
 
-import styles from "./InfoBlock.module.css";
+import styles from "../../_styles/InfoBlock.module.css";
 import {infoBlockItems} from "@/app/src/constants/structure";
-import InfoBlockIcons from "@/app/src/components/choosePage/InfoBlockIcons";
+import InfoBlockIcons from "@/app/choose/_components/rightData/InfoBlockIcons";
 import { useState } from "react";
 
 const ChooseInfoBlock = () => {

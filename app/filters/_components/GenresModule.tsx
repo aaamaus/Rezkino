@@ -2,7 +2,7 @@
 
 import { genresData } from "@/app/src/constants/structure";
 import {useAppDispatch, useAppSelector} from "@/app/store/store";
-import styles from "./FilterComponents.module.css";
+import styles from "../_styles/FilterComponents.module.css";
 import {setGenres} from "@/app/store/slices/filters.slice";
 
 const GenresModule = () => {

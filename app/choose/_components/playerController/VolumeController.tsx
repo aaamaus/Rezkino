@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "./InfoBlock.module.css";
+import styles from "../../_styles/InfoBlock.module.css";
 import Slider from "@mui/material/Slider";
 import Volume from "@/app/src/components/icons/Volume";
 import {useState} from "react";

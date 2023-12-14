@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "./FilterComponents.module.css";
+import styles from "../_styles/FilterComponents.module.css";
 import Search from "@/app/src/components/icons/Search";
 import { useState } from "react";
 import {setSearch} from "@/app/store/slices/filters.slice";

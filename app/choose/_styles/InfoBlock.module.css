@@ -3,9 +3,6 @@
 }
 
 .itemInfoBar {
-    height: 40rem;
-    width: 33px;
-    margin-left: 3.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,14 +33,13 @@
 
 .footerContent {
     font-size: 20px;
-    width: 62.0rem;
+    width: 100%;
     height: 3rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
     position: relative;
     z-index: 9999999;
-    padding-right: 5.18rem;
     transform: translateY(-5px) translate3d(0, 0, 200px);
 }
 
@@ -133,20 +129,28 @@
     margin-left: 30px;
 }
 
-/*.footerContentDataNumber span {*/
-/*    color: var(--text-gray);*/
-/*    font-size: 16px;*/
-/*    font-style: normal;*/
-/*    font-weight: 400;*/
-/*    line-height: normal;*/
-/*}*/
-
-.imageWrapper {
-    border-radius: 20px;
+.videoBlockContent {
+    width: 50%;
+    height: 85%;
     position: relative;
 }
 
-.imageWrapper iframe {
+.rightInfoBlock {
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    height: 100%;
+    right: -83px;
+}
+
+.bottomInfoBlock {
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+}
+
+.videoBlockContent iframe {
     position: absolute;
     top: 0;
     left: 0;
@@ -154,14 +158,14 @@
     height: 100%;
 }
 
-.imageWrapper:before {
+.cover {
     content: "";
     position: absolute;
     top: 0;
     bottom: 0;
     right: 0;
     left: 0;
-    z-index: 99999;
+    z-index: 88888;
 }
 
 .topPlaceHolder {
@@ -263,70 +267,15 @@
 @media screen
 and (min-width: 600px)
 and (max-width: 1000px){
-    .imageWrapper {
-        height: 353px;
-        width: 600px;
-    }
-    .footerContent {
-        width: 680px;
+    .videoBlockContent {
+        width: 65%;
     }
 }
 
 @media screen
-and (min-width: 1000px)
-and (max-width: 1440px){
-    .imageWrapper {
-        height: 453px;
-        width: 700px;
-    }
-    .footerContent {
-        width: 780px;
-    }
-}
-
-@media screen
-and (min-width: 1440px)
-and (max-width: 1850px){
-    .imageWrapper {
-        height: 553px;
-        width: 900px;
-    }
-    .footerContent {
-        width: 980px;
-    }
-}
-
-@media screen
-and (min-width: 1850px)
-and (max-width: 2377px){
-    .imageWrapper {
-        height: 603px;
-        width: 900px;
-    }
-    .footerContent {
-        width: 980px;
-    }
-}
-
-@media screen
-and (min-width: 2377px)
-and (max-width: 2800px){
-    .imageWrapper {
-        height: 853px;
-        width: 1400px;
-    }
-    .footerContent {
-        width: 1480px;
-    }
-}
-
-@media screen
-and (min-width: 2801px){
-    .imageWrapper {
-        height: 853px;
-        width: 1400px;
-    }
-    .footerContent {
-        width: 1480px;
+and (min-width: 1880px)
+and (max-width: 2560px){
+    .videoBlockContent {
+        width: 65%;
     }
 }

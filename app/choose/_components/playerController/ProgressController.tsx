@@ -1,4 +1,4 @@
-import styles from "./InfoBlock.module.css";
+import styles from "../../_styles/InfoBlock.module.css";
 import Slider from "@mui/material/Slider";
 import {timeFormat} from "@/app/src/utils/helpers";
 

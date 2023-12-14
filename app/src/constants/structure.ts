@@ -29,6 +29,10 @@ export const infoBlockItems = [
   {
     path: 'share',
     number: 564
+  },
+  {
+    path: 'saved',
+    number: 34
   }
 ]
 

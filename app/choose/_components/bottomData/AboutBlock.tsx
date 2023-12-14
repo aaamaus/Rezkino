@@ -1,4 +1,4 @@
-import styles from "./InfoBlock.module.css";
+import styles from "../../_styles/InfoBlock.module.css";
 
 const AboutBlock = () => {
   return (

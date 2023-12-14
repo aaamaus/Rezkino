@@ -1,7 +1,7 @@
-import styles from './Filters.module.css';
-import { SearchModule } from "@/app/src/components/filtersPage/SearchModule";
-import PeriodModule from "@/app/src/components/filtersPage/PeriodModule";
-import GenresModule from "@/app/src/components/filtersPage/GenresModule";
+import styles from './_styles/Filters.module.css';
+import { SearchModule } from "@/app/filters/_components/SearchModule";
+import PeriodModule from "@/app/filters/_components/PeriodModule";
+import GenresModule from "@/app/filters/_components/GenresModule";
 
 const Filter = () => {
   return (

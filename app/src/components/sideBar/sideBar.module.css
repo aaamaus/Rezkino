@@ -36,7 +36,6 @@ ul li.itemSemanticWrapper:last-child {
     font-style: normal;
     font-weight: 400;
     line-height: 16px;
-    color: var(--secondary-gray);
 }
 
 .itemTitleActive {

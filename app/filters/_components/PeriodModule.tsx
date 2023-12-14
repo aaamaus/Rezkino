@@ -1,6 +1,6 @@
 "use client"
 
-import styles from "./FilterComponents.module.css";
+import styles from "../_styles/FilterComponents.module.css";
 import Slider from '@mui/material/Slider';
 import { useState } from "react";
 import {useAppDispatch, useAppSelector} from "@/app/store/store";

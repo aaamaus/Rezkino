@@ -1,4 +1,4 @@
-import styles from "@/app/choose/Choose.module.css";
+import styles from "@/app/choose/_styles/Choose.module.css";
 import Info from "@/app/src/components/icons/Info";
 import Close from "@/app/src/components/icons/Close";
 
