@@ -14,7 +14,6 @@ const Headers: IHeaders = {
   "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
   "accept": "application/json",
 };
-
 const generateQueryStr = (baseString: string, query: Object): string => {
   const queryString: string =
     baseString +
