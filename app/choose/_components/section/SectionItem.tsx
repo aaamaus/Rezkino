@@ -7,28 +7,27 @@ import PlayController from "@/app/choose/_components/playerController/PlayContro
 import ProgressController from "@/app/choose/_components/playerController/ProgressController";
 import ChooseInfoBlock from "@/app/choose/_components/rightData/ChooseInfoBlock";
 import ChooseFooter from "@/app/choose/_components/bottomData/ChooseFooter";
+import {useGetCurrentVideoQuery} from "@/app/store/api/filmAPI";
+import {ISectionItemProps} from "@/app/choose/_types/interfaces";
+import {UA} from "@/app/src/constants/local";
 
-interface IProps {
-  currentId: number,
-  item: {
-    id: number,
-    url: string
-  }
-}
-
-const SectionItem = ({ currentId, item }: IProps) => {
+const SectionItem = ({ currentId, item }: ISectionItemProps) => {
   const [pauseController, setPauseController] = useState(true);
   const [volume, setVolume] = useState<number | number[]>(50);
   const [volumeController, setVolumeController] = useState(false);
   const [player, setPlayer] = useState(null);
   const [time, setTime] = useState<number | number[]>(0);
   const [maxValue, setMaxValue] = useState<number | number[]>(0);
+  const { data, isLoading } = useGetCurrentVideoQuery({
+    queries: { language: UA },
+    id: item.id
+  });
 
   useEffect(() => {
     setTime(0);
   }, [currentId]);
 
-  return (
+  return (!isLoading && data?.results[0]?.key) && (
     <div className={styles.videoBlockContent}>
       <div
         onMouseEnter={() => setVolumeController(true)}
@@ -45,7 +44,7 @@ const SectionItem = ({ currentId, item }: IProps) => {
 					playing={currentId === item.id && pauseController}
 					loop={true}
 					volume={volume as number / 100}
-					url={item.url}
+					url={`https://www.youtube.com/watch?v=${data?.results[0]?.key}`}
 				/>}
         <div className={styles.bottomPlaceHolder}/>
         {volumeController && <div className={styles.playerControls}>

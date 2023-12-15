@@ -49,7 +49,7 @@ export const userMenuItems = [
 
 export const ROUTES_WITHOUT_SIDEBAR = ['/filters'];
 
-export const data = [
+export const mainData = [
   {
     url: 'https://www.youtube.com/watch?v=basLDO2bj2k&pp=ygUHdHJhaWxlcg%3D%3D',
     id: 1
