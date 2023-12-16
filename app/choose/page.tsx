@@ -16,7 +16,7 @@ const Choose = () => {
   const [page, setPage] = useState(1);
 
   const { data, isLoading } = useGetFilmsListQuery({
-    mainFilter: 'now_playing',
+    mainFilter: 'top_rated',
     queries: {
       language: UA,
       page: page,
