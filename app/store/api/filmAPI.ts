@@ -10,13 +10,17 @@ interface IGetVideoQueries {
   id: number
 }
 
+interface IGetMoviesList {
+  queries: Object,
+  mainFilter: string,
+}
+
 const Headers: IHeaders = {
   "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
   "accept": "application/json",
 };
 const generateQueryStr = (baseString: string, query: Object): string => {
-  const queryString: string =
-    baseString +
+  const queryString: string = baseString +
     Object.entries(query)
       .map(([key, value]) => `${key}=${value}`)
       .join("&");
@@ -24,7 +28,6 @@ const generateQueryStr = (baseString: string, query: Object): string => {
   return queryString;
 };
 
-console.log(process.env.NEXT_PUBLIC_BASE_URL, 'process.env.BASE_URL')
 export const filmsAPI = createApi({
   reducerPath: "films",
   baseQuery: fetchBaseQuery({
@@ -38,14 +41,23 @@ export const filmsAPI = createApi({
 
   endpoints: (builder) => ({     // <Type of data the call will return, Type of parameter being passed to the query function>
     getFilmsList: builder.query<any, Object>({
-      query: (queryParams) => {
-        const queryStr = generateQueryStr("movie/now_playing?", queryParams);
+      query: (queryParams: IGetMoviesList) => {
+        const queryStr = generateQueryStr(`/movie/${queryParams.mainFilter}?`, queryParams.queries);
         return { url: queryStr };
       },
+      serializeQueryArgs: ({ endpointName }) => {
+        return endpointName;
+      },
+      merge: (currentCache, newItems) => {
+        currentCache.results.push(...newItems.results);
+      },
+      forceRefetch({ currentArg, previousArg }) {
+        return currentArg !== previousArg;
+      }
     }),
     getCurrentVideo: builder.query<any, Object>({
       query: (queryParams: IGetVideoQueries) => {
-        const queryStr = generateQueryStr(`movie/${queryParams.id}/videos?`, queryParams.queries);
+        const queryStr = generateQueryStr(`/movie/${queryParams.id}/videos?`, queryParams.queries);
         return { url: queryStr };
       },
     }),

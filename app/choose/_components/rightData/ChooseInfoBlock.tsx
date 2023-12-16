@@ -5,8 +5,26 @@ import {infoBlockItems} from "@/app/src/constants/structure";
 import InfoBlockIcons from "@/app/choose/_components/rightData/InfoBlockIcons";
 import { useState } from "react";
 
-const ChooseInfoBlock = () => {
+interface IProps {
+  voteCount: number
+}
+
+const ChooseInfoBlock = ({ voteCount }: IProps) => {
   const [hoveredItem, setHoveredItem] = useState('');
+
+  const valueHandler = (path: string, def: any) => {
+    if (path === 'likes') {
+      return voteCount;
+    }
+    if (path === 'saved') {
+      return Math.round(voteCount / 5);
+    }
+    if (path === 'share') {
+      return Math.round(voteCount / 3);
+    }
+
+    return def;
+  };
 
   return (
     <div className={styles.itemInfoBar}>
@@ -23,7 +41,7 @@ const ChooseInfoBlock = () => {
               iconName={infoBlockItem.path}
               hoveredItem={hoveredItem}
             />
-            <div>{infoBlockItem.number}</div>
+            <div>{valueHandler(infoBlockItem.path, infoBlockItem.number)}</div>
           </div>
         )
       })}

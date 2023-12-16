@@ -7,19 +7,26 @@ import SectionItem from "@/app/choose/_components/section/SectionItem";
 import Tooltip from "@/app/src/components/shared/Tooltip";
 import {Portal} from "@mui/base/Portal";
 import {useGetFilmsListQuery} from "@/app/store/api/filmAPI";
-import {ISectionItem, ISectionItemProps} from "@/app/choose/_types/interfaces";
+import { ISectionItem } from "@/app/choose/_types/interfaces";
 import {UA} from "@/app/src/constants/local";
 
 const Choose = () => {
   const [currentId, setCurrentId] = useState<number>(0);
   const [likesTooltip, setLikesTooltip] = useState<string | null>('');
+  const [page, setPage] = useState(1);
 
   const { data, isLoading } = useGetFilmsListQuery({
-    language: UA,
-    page: "1",
+    mainFilter: 'now_playing',
+    queries: {
+      language: UA,
+      page: page,
+    }
   });
 
-  console.log(data, 'data')
+  const setPageHandler = () => {
+    setPage((prevState: number) => prevState + 1)
+  }
+
   useEffect(() => {
     setLikesTooltip(localStorage.getItem('likesTooltip'));
   }, []);
@@ -29,7 +36,7 @@ const Choose = () => {
       <ReactFullpage
         credits={{}}
         licenseKey = {'YOUR_KEY_HERE'}
-        scrollingSpeed = {300}
+        scrollingSpeed = {700}
         scrollBar={false}
         afterLoad={(_, index) => {
           setCurrentId(data.results[index.index].id)
@@ -37,10 +44,19 @@ const Choose = () => {
         render={() => {
           return (
             <ReactFullpage.Wrapper>
-              {data.results.map((item: ISectionItem) => {
+              {data.results.map((item: ISectionItem, index: number) => {
                 return  (
                   <div className={`${styles.section} section`} key={item.id} id={`${item.id}`}>
-                    <div className={styles.item}><SectionItem item={item} currentId={currentId} /></div>
+                    <div className={styles.item}>
+                      {currentId === item.id && (
+                        <SectionItem
+                          item={item}
+                          currentId={currentId}
+                          countPageFlag={index === data.results.length - 2}
+                          setPageHandler={setPageHandler}
+                        />
+                      )}
+                    </div>
                   </div>
                 )
               })}

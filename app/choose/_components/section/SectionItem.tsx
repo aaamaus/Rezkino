@@ -7,27 +7,47 @@ import PlayController from "@/app/choose/_components/playerController/PlayContro
 import ProgressController from "@/app/choose/_components/playerController/ProgressController";
 import ChooseInfoBlock from "@/app/choose/_components/rightData/ChooseInfoBlock";
 import ChooseFooter from "@/app/choose/_components/bottomData/ChooseFooter";
-import {useGetCurrentVideoQuery} from "@/app/store/api/filmAPI";
 import {ISectionItemProps} from "@/app/choose/_types/interfaces";
-import {UA} from "@/app/src/constants/local";
+import useFilmsRU from "@/app/src/hooks/useFilmsRU";
+import useFilmsUA from "@/app/src/hooks/useFilmsUA";
+import useFilmsEN from "@/app/src/hooks/useFilmsEN";
 
-const SectionItem = ({ currentId, item }: ISectionItemProps) => {
+const SectionItem = ({ currentId, item, countPageFlag, setPageHandler }: ISectionItemProps) => {
   const [pauseController, setPauseController] = useState(true);
   const [volume, setVolume] = useState<number | number[]>(50);
   const [volumeController, setVolumeController] = useState(false);
   const [player, setPlayer] = useState(null);
   const [time, setTime] = useState<number | number[]>(0);
   const [maxValue, setMaxValue] = useState<number | number[]>(0);
-  const { data, isLoading } = useGetCurrentVideoQuery({
-    queries: { language: UA },
-    id: item.id
-  });
+  const [url, setUrl] = useState('');
+
+  const { uaData, uaIsLoading } = useFilmsUA(item.id);
+  const { ruFilm } = useFilmsRU(item.id);
+  const { enData } = useFilmsEN(item.id);
+
+  useEffect(() => {
+    if (uaData?.results[0]?.key) {
+      return setUrl(uaData?.results[0]?.key);
+    }
+
+    if (ruFilm?.results[0]?.key) {
+      return setUrl(ruFilm?.results[0]?.key);
+    }
+
+    return setUrl(enData?.results[0]?.key);
+  }, [uaData, ruFilm, enData]);
+
+  useEffect(() => {
+    if (countPageFlag) {
+      setPageHandler();
+    }
+  }, [countPageFlag]);
 
   useEffect(() => {
     setTime(0);
   }, [currentId]);
 
-  return (!isLoading && data?.results[0]?.key) && (
+  return (!uaIsLoading && url) && (
     <div className={styles.videoBlockContent}>
       <div
         onMouseEnter={() => setVolumeController(true)}
@@ -35,17 +55,18 @@ const SectionItem = ({ currentId, item }: ISectionItemProps) => {
       >
         <div className={styles.topPlaceHolder}/>
         <div className={styles.cover} onClick={() => setPauseController(!pauseController)}/>
-        {currentId === item.id && <ReactPlayer
-					controls={false}
-					progressInterval={time as number}
-					onProgress={(value) => setTime(Math.round(value.playedSeconds))}
-					onDuration={(value) => setMaxValue(value)} // @ts-ignore
-					onReady={(e) => setPlayer(e['player'])}
-					playing={currentId === item.id && pauseController}
-					loop={true}
-					volume={volume as number / 100}
-					url={`https://www.youtube.com/watch?v=${data?.results[0]?.key}`}
-				/>}
+        <ReactPlayer
+          controls={false}
+          progressInterval={time as number}
+          onProgress={(value) => setTime(Math.round(value.playedSeconds))}
+          onDuration={(value) => setMaxValue(value)} // @ts-ignore
+          onReady={(e) => setPlayer(e['player'])}
+          onError={(e) => console.log(e, 'error')}
+          playing={currentId === item.id && pauseController}
+          loop={true}
+          volume={volume as number / 100}
+          url={`https://www.youtube.com/watch?v=${url}`}
+        />
         <div className={styles.bottomPlaceHolder}/>
         {volumeController && <div className={styles.playerControls}>
 					<PlayController
@@ -64,8 +85,14 @@ const SectionItem = ({ currentId, item }: ISectionItemProps) => {
 					/>
 				</div>}
       </div>
-      <div className={styles.rightInfoBlock}><ChooseInfoBlock /></div>
-      <div className={styles.bottomInfoBlock}><ChooseFooter /></div>
+      <div className={styles.rightInfoBlock}><ChooseInfoBlock voteCount={item.vote_count} /></div>
+      <div className={styles.bottomInfoBlock}>
+        <ChooseFooter
+          voteAverage={item.vote_average}
+          genres={item.genre_ids}
+          date={item.release_date}
+        />
+      </div>
     </div>
   )
 };
