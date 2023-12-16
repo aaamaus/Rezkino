@@ -35,7 +35,7 @@ const Choose = () => {
     <main className={styles.mainWrapper} id={'main'}>
       <ReactFullpage
         credits={{}}
-        licenseKey = {'YOUR_KEY_HERE'}
+        licenseKey = {process.env.NEXT_PUBLIC_FULL_PAGE_API_KEY}
         scrollingSpeed = {700}
         scrollBar={false}
         afterLoad={(_, index) => {
