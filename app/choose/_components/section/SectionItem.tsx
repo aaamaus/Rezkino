@@ -11,11 +11,14 @@ import {ISectionItemProps} from "@/app/choose/_types/interfaces";
 import useFilmsRU from "@/app/src/hooks/useFilmsRU";
 import useFilmsUA from "@/app/src/hooks/useFilmsUA";
 import useFilmsEN from "@/app/src/hooks/useFilmsEN";
+import Image from "next/image";
+import PlayL from "@/app/src/components/icons/PlayL";
 
 const SectionItem = ({ currentId, item, countPageFlag, setPageHandler }: ISectionItemProps) => {
   const [pauseController, setPauseController] = useState(true);
   const [volume, setVolume] = useState<number | number[]>(50);
   const [volumeController, setVolumeController] = useState(false);
+  const [hoveredPlayL, setHoveredPlayL] = useState(false);
   const [player, setPlayer] = useState(null);
   const [time, setTime] = useState<number | number[]>(0);
   const [maxValue, setMaxValue] = useState<number | number[]>(0);
@@ -54,7 +57,22 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler }: ISectio
         onMouseLeave={() => setVolumeController(false)}
       >
         <div className={styles.topPlaceHolder}/>
-        <div className={styles.cover} onClick={() => setPauseController(!pauseController)}/>
+        <div className={`${styles.cover} ${!pauseController ? styles.coverPaused : ''}`}
+             style={!pauseController ? {
+               backgroundImage: `url(${process.env.NEXT_PUBLIC_IMG_BASE_URL}${item.backdrop_path})`,
+             } : {}}
+             onClick={() => setPauseController(!pauseController)}
+        >
+          {!pauseController && (
+            <div
+              className={styles.playIconWrapper}
+              onMouseEnter={() => setHoveredPlayL(true)}
+              onMouseLeave={() => setHoveredPlayL(false)}
+            >
+              <PlayL hovered={hoveredPlayL}/>
+            </div>
+          )}
+        </div>
         <ReactPlayer
           controls={false}
           progressInterval={time as number}

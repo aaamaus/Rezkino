@@ -162,10 +162,35 @@
     content: "";
     position: absolute;
     top: 0;
-    bottom: 0;
+    bottom: 45px;
     right: 0;
     left: 0;
     z-index: 88888;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.playIconWrapper {
+    position: relative;
+    z-index: 999999;
+}
+
+.playIconWrapper:hover {
+    cursor: pointer;
+}
+
+.coverPaused:before {
+    content: "";
+    position: absolute;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.40) 0%, rgba(0, 0, 0, 0.40) 100%);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .topPlaceHolder {
