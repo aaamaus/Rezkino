@@ -14,6 +14,9 @@ const Choose = () => {
   const [currentId, setCurrentId] = useState<number>(0);
   const [likesTooltip, setLikesTooltip] = useState<string | null>('');
   const [page, setPage] = useState(1);
+  const [api, setApi] = useState({
+    setAllowScrolling: (val: boolean) => {}
+  });
 
   const { data, isLoading } = useGetFilmsListQuery({
     mainFilter: 'popular',
@@ -38,13 +41,26 @@ const Choose = () => {
         licenseKey = {process.env.NEXT_PUBLIC_FULL_PAGE_API_KEY}
         scrollingSpeed = {700}
         scrollBar={false}
+        anchors={data.results.map((film: ISectionItem) => `${film.id}_${film.backdrop_path}`)}
         afterLoad={(_, index) => {
           setCurrentId(data.results[index.index].id)
+          let timeout: any;
+          api?.setAllowScrolling(false);
+
+          timeout = setTimeout(() => {
+            api.setAllowScrolling(true);
+            clearTimeout(timeout);
+          }, 1000);
         }}
-        render={() => {
+        render={({state, fullpageApi}) => {
+          setApi(fullpageApi);
+
           return (
             <ReactFullpage.Wrapper>
               {data.results.map((item: ISectionItem, index: number) => {
+                if (index === data.results.length - 10 && currentId === data.results[index].id) {
+                  fullpageApi.reBuild();
+                }
                 return  (
                   <div className={`${styles.section} section`} key={item.id} id={`${item.id}`}>
                     <div className={styles.item}>
@@ -52,7 +68,7 @@ const Choose = () => {
                         <SectionItem
                           item={item}
                           currentId={currentId}
-                          countPageFlag={index === data.results.length - 2}
+                          countPageFlag={index === data.results.length - 9}
                           setPageHandler={setPageHandler}
                         />
                       )}
