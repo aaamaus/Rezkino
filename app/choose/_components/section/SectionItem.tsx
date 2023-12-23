@@ -14,31 +14,41 @@ import useFilmsEN from "@/app/src/hooks/useFilmsEN";
 import Image from "next/image";
 import PlayL from "@/app/src/components/icons/PlayL";
 
-const SectionItem = ({ currentId, item, countPageFlag, setPageHandler }: ISectionItemProps) => {
+const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: ISectionItemProps) => {
   const [pauseController, setPauseController] = useState(true);
-  const [volume, setVolume] = useState<number | number[]>(50);
+  const [volume, setVolume] = useState<number | number[]>(
+    JSON.parse(localStorage.getItem('volume') as string)
+  );
   const [volumeController, setVolumeController] = useState(false);
   const [hoveredPlayL, setHoveredPlayL] = useState(false);
   const [player, setPlayer] = useState(null);
   const [time, setTime] = useState<number | number[]>(0);
   const [maxValue, setMaxValue] = useState<number | number[]>(0);
   const [url, setUrl] = useState('');
+  const [error, setError] = useState('');
 
   const { uaData, uaIsLoading } = useFilmsUA(item.id);
-  const { ruFilm } = useFilmsRU(item.id);
-  const { enData } = useFilmsEN(item.id);
+  const { ruFilm, ruIsLoading } = useFilmsRU(item.id);
 
   useEffect(() => {
     if (uaData?.results[0]?.key) {
-      return setUrl(uaData?.results[0]?.key);
+      setUrl(uaData?.results[0]?.key);
+    } else {
+      setUrl(ruFilm?.results[0]?.key);
     }
+  }, [uaData, ruFilm]);
 
-    if (ruFilm?.results[0]?.key) {
-      return setUrl(ruFilm?.results[0]?.key);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (!url) {
+        api.moveSectionDown();
+      }
+    }, 400);
+
+    return () => {
+      clearTimeout(timeout);
     }
-
-    return setUrl(enData?.results[0]?.key);
-  }, [uaData, ruFilm, enData]);
+  }, [url]);
 
   useEffect(() => {
     if (countPageFlag) {
@@ -48,9 +58,14 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler }: ISectio
 
   useEffect(() => {
     setTime(0);
+    setError('');
   }, [currentId]);
 
-  return (!uaIsLoading && url) && (
+  useEffect(() => {
+    localStorage.setItem('volume', JSON.stringify(volume));
+  }, [volume]);
+
+  return (!uaIsLoading && url && !error) && (
     <div className={styles.videoBlockContent}>
       <div
         onMouseEnter={() => setVolumeController(true)}
@@ -78,8 +93,15 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler }: ISectio
           progressInterval={time as number}
           onProgress={(value) => setTime(Math.round(value.playedSeconds))}
           onDuration={(value) => setMaxValue(value)} // @ts-ignore
-          onReady={(e) => setPlayer(e['player'])}
-          onError={(e) => console.log(e, 'error')}
+          onReady={(e: any) => {
+            setPlayer(e['player'])
+          }}
+          onError={(e) => {
+            if (e) {
+              api.moveSectionDown();
+              setError(e);
+            }
+          }}
           playing={currentId === item.id && pauseController}
           loop={true}
           volume={volume as number / 100}

@@ -58,18 +58,16 @@ const Choose = () => {
           return (
             <ReactFullpage.Wrapper>
               {data.results.map((item: ISectionItem, index: number) => {
-                if (index === data.results.length - 10 && currentId === data.results[index].id) {
-                  fullpageApi.reBuild();
-                }
                 return  (
-                  <div className={`${styles.section} section`} key={item.id} id={`${item.id}`}>
+                  <div className={`${styles.section} section`} key={`${item.id}_${index}`} id={`${item.id}_${index}`}>
                     <div className={styles.item}>
                       {currentId === item.id && (
                         <SectionItem
                           item={item}
                           currentId={currentId}
-                          countPageFlag={index === data.results.length - 9}
+                          countPageFlag={index === data.results.length - 5}
                           setPageHandler={setPageHandler}
+                          api={fullpageApi}
                         />
                       )}
                     </div>

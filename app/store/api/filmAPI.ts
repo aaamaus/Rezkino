@@ -50,6 +50,11 @@ export const filmsAPI = createApi({
       },
       merge: (currentCache, newItems) => {
         currentCache.results.push(...newItems.results);
+        currentCache.results.filter((value: any, index: any, self: any) =>
+            index === self.findIndex((t: any) => (
+              t.id === value.id
+            ))
+        )
       },
       forceRefetch({ currentArg, previousArg }) {
         return currentArg !== previousArg;
