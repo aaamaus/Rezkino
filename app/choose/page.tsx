@@ -56,7 +56,7 @@ const Choose = () => {
       }
     }
 
-    console.log(currentId, data);
+    console.log(currentId, data, renderData);
   }, [data, currentId]);
 
   useEffect(() => {
