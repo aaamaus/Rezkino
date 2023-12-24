@@ -70,7 +70,8 @@ const Choose = () => {
         scrollBar={false}
         anchors={data.results.map((film: ISectionItem) => `${film.id}_${film.backdrop_path}`)}
         afterLoad={(_, index) => {
-          setCurrentId(renderData[index.index].id || 0)
+          setCurrentId(renderData[index.index]?.id || 0);
+
           let timeout: any;
           api?.setAllowScrolling(false);
 
