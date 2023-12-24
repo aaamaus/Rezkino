@@ -55,6 +55,8 @@ const Choose = () => {
         setRenderData(data?.results?.slice(currentIndex - 4, currentIndex + 5));
       }
     }
+
+    console.log(currentId, data);
   }, [data, currentId]);
 
   useEffect(() => {
