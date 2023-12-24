@@ -68,7 +68,11 @@ const SectionItem = ({ currentId, item, api }: ISectionItemProps) => {
         <div className={`${styles.cover} ${!pauseController ? styles.coverPaused : ''}`}
              style={!pauseController ? {
                backgroundImage: `url(${process.env.NEXT_PUBLIC_IMG_BASE_URL}${item.backdrop_path})`,
-             } : {}}
+               opacity: 1
+             } : {
+               backgroundImage: `url(${process.env.NEXT_PUBLIC_IMG_BASE_URL}${item.backdrop_path})`,
+               opacity: 0
+             }}
              onClick={() => setPauseController(!pauseController)}
         >
           {!pauseController && (
