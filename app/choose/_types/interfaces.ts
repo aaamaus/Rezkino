@@ -18,7 +18,5 @@ export interface ISectionItem {
 export interface ISectionItemProps {
   currentId: number,
   item: ISectionItem,
-  countPageFlag: boolean,
-  setPageHandler: () => void,
   api: any
 }

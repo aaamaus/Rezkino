@@ -17,7 +17,7 @@ import Loader from "@/app/src/components/icons/Loader";
 
 let timer: any;
 
-const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: ISectionItemProps) => {
+const SectionItem = ({ currentId, item, api }: ISectionItemProps) => {
   const [pauseController, setPauseController] = useState(true);
   const [volume, setVolume] = useState<number | number[]>(
     JSON.parse(localStorage.getItem('volume') as string)
@@ -43,12 +43,6 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: IS
       setUrl(enData?.results[0]?.key);
     }
   }, [uaData, ruFilm, enData]);
-
-  useEffect(() => {
-    if (countPageFlag) {
-      setPageHandler();
-    }
-  }, [countPageFlag]);
 
   useEffect(() => {
     setTime(0);
