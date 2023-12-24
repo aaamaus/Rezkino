@@ -15,7 +15,8 @@ const Choose = () => {
   const [likesTooltip, setLikesTooltip] = useState<string | null>('');
   const [page, setPage] = useState(1);
   const [api, setApi] = useState({
-    setAllowScrolling: (val: boolean) => {}
+    setAllowScrolling: (val: boolean) => {},
+    reBuild() {}
   });
 
   const { data, isLoading } = useGetFilmsListQuery({
@@ -27,7 +28,11 @@ const Choose = () => {
   });
 
   const setPageHandler = () => {
-    setPage((prevState: number) => prevState + 1)
+    setPage((prevState: number) => prevState + 1);
+
+    setTimeout(() => {
+      api?.reBuild();
+    }, 500);
   }
 
   useEffect(() => {

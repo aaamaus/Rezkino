@@ -13,6 +13,9 @@ import useFilmsUA from "@/app/src/hooks/useFilmsUA";
 import useFilmsEN from "@/app/src/hooks/useFilmsEN";
 import Image from "next/image";
 import PlayL from "@/app/src/components/icons/PlayL";
+import Loader from "@/app/src/components/icons/Loader";
+
+let timer: any;
 
 const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: ISectionItemProps) => {
   const [pauseController, setPauseController] = useState(true);
@@ -26,29 +29,20 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: IS
   const [maxValue, setMaxValue] = useState<number | number[]>(0);
   const [url, setUrl] = useState('');
   const [error, setError] = useState('');
-
-  const { uaData, uaIsLoading } = useFilmsUA(item.id);
-  const { ruFilm, ruIsLoading } = useFilmsRU(item.id);
+  const [readyFlag, setReadyFlag] = useState(false);
+  const { uaData } = useFilmsUA(item.id);
+  const { ruFilm } = useFilmsRU(item.id);
+  const { enData } = useFilmsEN(item.id);
 
   useEffect(() => {
     if (uaData?.results[0]?.key) {
       setUrl(uaData?.results[0]?.key);
-    } else {
+    } else if (!uaData?.results[0]?.key && ruFilm?.results[0]?.key) {
       setUrl(ruFilm?.results[0]?.key);
+    } else {
+      setUrl(enData?.results[0]?.key);
     }
-  }, [uaData, ruFilm]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!url) {
-        api.moveSectionDown();
-      }
-    }, 400);
-
-    return () => {
-      clearTimeout(timeout);
-    }
-  }, [url]);
+  }, [uaData, ruFilm, enData]);
 
   useEffect(() => {
     if (countPageFlag) {
@@ -65,13 +59,18 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: IS
     localStorage.setItem('volume', JSON.stringify(volume));
   }, [volume]);
 
-  return (!uaIsLoading && url && !error) && (
+  useEffect(() => () => {
+    clearTimeout(timer);
+  }, []);
+
+  return (url && !error) && (
     <div className={styles.videoBlockContent}>
       <div
         onMouseEnter={() => setVolumeController(true)}
         onMouseLeave={() => setVolumeController(false)}
       >
         <div className={styles.topPlaceHolder}/>
+        {(!readyFlag || error) && < div className={styles.loader}><Loader /></div>}
         <div className={`${styles.cover} ${!pauseController ? styles.coverPaused : ''}`}
              style={!pauseController ? {
                backgroundImage: `url(${process.env.NEXT_PUBLIC_IMG_BASE_URL}${item.backdrop_path})`,
@@ -94,6 +93,10 @@ const SectionItem = ({ currentId, item, countPageFlag, setPageHandler, api }: IS
           onProgress={(value) => setTime(Math.round(value.playedSeconds))}
           onDuration={(value) => setMaxValue(value)} // @ts-ignore
           onReady={(e: any) => {
+            timer = setTimeout(() =>{
+              setReadyFlag(true);
+            }, 200);
+
             setPlayer(e['player'])
           }}
           onError={(e) => {
