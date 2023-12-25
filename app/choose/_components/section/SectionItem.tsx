@@ -89,13 +89,15 @@ const SectionItem = ({ currentId, item, api }: ISectionItemProps) => {
           controls={false}
           progressInterval={time as number}
           onProgress={(value) => setTime(Math.round(value.playedSeconds))}
-          onDuration={(value) => setMaxValue(value)} // @ts-ignore
           onReady={(e: any) => {
             timer = setTimeout(() =>{
               setReadyFlag(true);
             }, 200);
 
             setPlayer(e['player'])
+
+            const duration = e['player'].getDuration();
+            setMaxValue(duration);
           }}
           onError={(e) => {
             if (e) {
